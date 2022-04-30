@@ -13,17 +13,17 @@ class Solution {
         // code here
          sort(arr,arr+n);
        int small;
-       int large,ans,mi,ma;
+       int large,ans,mi,csk;
        ans=arr[n-1]-arr[0];
        small=arr[0]+k;
        large=arr[n-1]-k;
        
        for(int i=0;i<n;i++)
        {
-           mi=min(small,arr[i+1]-k);
-           ma=max(large,arr[i]+k);
-           if(mi<0) {continue;}
-           ans=min(ans,ma-mi);
+           csk=min(small,arr[i+1]-k);
+           mi=max(large,arr[i]+k);
+           if(csk<0) {continue;}
+           ans=min(ans,mi-csk);
        }
      return ans;
     }
