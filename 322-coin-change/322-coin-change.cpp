@@ -1,20 +1,36 @@
 class Solution {
 public:
-    int coinChange(vector<int>& coins, int n) {
-       int dp[++n];
-        dp[0] = 0;
-        
-        sort(begin(coins), end(coins));
-        
-        for (int i = 1; i < n; i++) {
-           
-            dp[i] = INT_MAX;
-            for (int c: coins) {
-                if (i - c < 0) break;
-                
-                if (dp[i - c] != INT_MAX) dp[i] = min(dp[i], 1 + dp[i - c]);
-            }
-        }
-        return dp[--n] == INT_MAX ? -1 : dp[n];   
-    }
+int dp[10001];
+    
+int solve(vector<int>& coins, int amount)
+{
+int ans=10001;
+    
+if(amount==0)
+return 0;
+    
+if(dp[amount]!=-1)
+return dp[amount];
+    
+for(int i=0;i<coins.size();i++)
+{
+if(amount-coins[i]>=0)
+ans=min(ans,solve(coins,amount-coins[i])+1);
+}
+    
+return dp[amount]=ans;
+
+}
+    
+int coinChange(vector<int>& coins, int amount) {
+    
+memset(dp,-1,sizeof(dp));
+    
+int res=solve(coins,amount);
+    
+if(res==10001)
+return -1;
+return res;
+}
+    
 };
