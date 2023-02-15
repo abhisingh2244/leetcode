@@ -20,7 +20,7 @@ public:
     }
     bool isPalindrome(ListNode* head) {
         if(head==NULL){
-            return false;
+            return true;
         }
         if(head->next==NULL){
             return true;
