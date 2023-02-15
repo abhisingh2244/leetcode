@@ -8,8 +8,8 @@
  */
 class Solution {
 public:
-    bool hasCycle(ListNode *head) {
-        ListNode*temp=head;
+    bool hasCycle(ListNode *temp) {
+        // ListNode*temp=head;
         unordered_set<ListNode*>st;
         while(temp!=NULL)
         {
