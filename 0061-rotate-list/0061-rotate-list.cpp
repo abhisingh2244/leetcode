@@ -23,15 +23,21 @@ public:
     ListNode* rotateRight(ListNode* head, int k) {
      if(head==NULL || head->next==NULL or k==0)return head;
         int n=length(head);
-        k=k%n;
-        for(int i=0;i<k;i++){
-        ListNode* temp=head;
-        while(temp->next->next!=NULL )temp=temp->next;
-        ListNode* end=temp->next;
-        temp->next=NULL;
-        end->next=head;
-        head=end;
+    ListNode*temp = head;
+    int length = 1;
+    while(temp->next != NULL) {
+        ++length;
+        temp = temp->next;
     }
+    temp->next = head;
+    k = k%n; //when k is more than length of list
+    int end = n-k; //to get end of the list
+    while(end--) temp = temp->next;
+    //breaking last node link and pointing to NULL
+    head = temp->next;
+    temp->next = NULL;
+        
+   
         return head;
     }
 };
