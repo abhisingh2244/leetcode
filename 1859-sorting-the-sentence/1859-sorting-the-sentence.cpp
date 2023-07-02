@@ -1,7 +1,7 @@
 class Solution {
 public:
     string sortSentence(string s) {
-        string word="" ;
+     string word="" ;
         vector<string> v(10);
          for(int i=0;i<s.size();i++)  
          {
@@ -24,6 +24,6 @@ public:
 
           return word;
 
+      
     }
-    
 };
